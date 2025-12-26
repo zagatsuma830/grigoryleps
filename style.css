@@ -1,0 +1,123 @@
+:root {
+    --bg: #0a192f;
+    --text: #ffffff;
+    --drift: #e6f7ff;
+    --accent: #ff4d4d;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+    --bg: #87CEEB;
+    --text: #2c3e50;
+    --drift: #ffffff;
+    --accent: #d32f2f;
+    --card-bg: rgba(255, 255, 255, 0.4);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    transition: background 0.8s ease;
+}
+
+/* Интерфейс */
+.interface {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    pointer-events: none;
+}
+
+.interface * { pointer-events: auto; }
+
+.timer-card {
+    background: var(--card-bg);
+    padding: 20px 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+#timer {
+    font-size: clamp(2rem, 10vw, 4.5rem);
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+.controls {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+button:hover { transform: scale(1.05); }
+button.off { background: #555; }
+
+/* Переключатель темы */
+.switch { position: relative; width: 50px; height: 26px; display: inline-block; margin: 0 10px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background: #2c3e50; border-radius: 34px; transition: 0.4s;
+}
+.slider:before {
+    position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px;
+    background: white; border-radius: 50%; transition: 0.4s;
+}
+input:checked + .slider { background: #f1c40f; }
+input:checked + .slider:before { transform: translateX(24px); }
+
+/* Гирлянда */
+#garland-container {
+    position: fixed;
+    top: 0; width: 100%; height: 40px;
+    display: flex; justify-content: space-around;
+    z-index: 100; pointer-events: none;
+}
+.light-bulb {
+    width: 12px; height: 12px; border-radius: 50%;
+    margin-top: 5px; transition: 0.5s;
+}
+
+/* Сугробы и ракеты */
+.snow-ground {
+    position: fixed;
+    bottom: 0; width: 100%; height: 120px;
+    background: var(--drift);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: scaleX(1.2);
+    z-index: 5;
+    transition: background 0.8s ease;
+}
+
+.rocket {
+    position: absolute;
+    bottom: 85px; width: 12px; height: 38px;
+    background: linear-gradient(to top, #ff3e3e, #ffaa00);
+    cursor: pointer; z-index: 6; border-radius: 2px;
+}
+
+canvas { position: fixed; top: 0; left: 0; z-index: 2; pointer-events: none; }
