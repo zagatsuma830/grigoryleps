@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новогодний Отсчет 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+    <!-- Гирлянда заполняется через JS -->
+    <div id="garland-container"></div>
+
+    <div class="interface">
+        <div class="timer-card">
+            <h1>До Нового Года 2026 осталось:</h1>
+            <div id="timer">00:00:00:00</div>
+        </div>
+        
+        <div class="controls">
+            <button id="gift-btn">🎁 Подаркопад</button>
+            <button id="garland-btn">💡 Гирлянда: Вкл</button>
+            
+            <div class="theme-switch-wrapper">
+                <span>🌙</span>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>☀️</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Сугробы и ракеты -->
+    <div class="snow-ground" id="ground"></div>
+
+    <!-- Холст для снега, подарков и фейерверков -->
+    <canvas id="mainCanvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
